@@ -11,11 +11,13 @@ npm install<br/>
 to install all the relevant dependencies.
 
 ### run
-Run the application using following commands<br/><br/>
+Run the application using following commands<br/>
 
-nodemon server 
-or 
-npm run serve 
+nodemon server<br/>
+
+or
+
+npm run serve<br/>
 
 ## Support Links
 
