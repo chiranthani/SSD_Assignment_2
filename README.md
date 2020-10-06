@@ -10,7 +10,8 @@ Clone or download the application from the repository and
 to install all the relevant dependencies.
 
 
- 
+
+### Run
 Run the application using following commands
 
 #### nodemon server 
