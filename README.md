@@ -2,7 +2,7 @@
 
 ## Getting started 
 
-1. ### Install 
+### Install 
 
 Clone or download the application from the repository and 
 
