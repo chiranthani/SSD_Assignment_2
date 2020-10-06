@@ -1,0 +1,139 @@
+<html>
+
+<head>
+  <title> Google calender API </title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
+
+</head>
+
+<body>
+
+  <body style="margin-top: 0px;">
+    <div class="grey lighten-3 container">
+      <div class="col s6 m7 center  grey lighten-3">
+        <h2 class="header" style="height: 80px;"> Create Your Event </h2>
+        <span id="msg">
+          <h4 style="text-decoration-color: rgb(172, 8, 41);"> successfully event added !!! </h4>
+        </span>
+        <span id="msg_error">
+          <h4 style="text-decoration-color: rgb(172, 8, 41);"> Something Went Wrong !!! </h4>
+        </span>
+        <span id="url_id"> </span>
+
+        <form id="main_form"
+          style="width: 30opx; align-content: center; margin-right:150px;margin-left:150px; margin-top: 20px;padding-top: 10px">
+          <div class="form-group">
+
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4">
+              <input type="text" class="form-control" name="summary" id="summary" placeholder="summary" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4">
+              <textarea class="form-control" name="description" id="description" placeholder="Description" rows="10"
+                cols="20" required></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-4">
+              <input type="text" class="form-control" name="location" id="location" placeholder="Location" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-2">
+              <div class="help-block">Start</div>
+              <input type="datetime-local" id="start" name="start" class="form-control input-datetimepicker"
+                data-date-format="yyy-mm-ddThh:ii" required>
+            </div>
+            <div class="col-md-2">
+              <div class="help-block">End </div>
+              <input type="datetime-local" id="end" name="end" class="form-control input-datetimepicker"
+                data-date-format="yyy-mm-ddThh:ii" required>
+            </div>
+          </div>
+
+          <div class="center-align">
+            <button type="button" id="eventSubmit" class="waves-effect waves-light btn  red darken-3"> add
+              event</button>
+
+          </div>
+        </form>
+
+      </div>
+      <div class="footer-copyright  center   grey lighten-3 " style="padding: 4px;">
+        <p> ADDING EVENTS MADE EASY WITH GOOGLE </p>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    </div>
+
+  </body>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+  $('#msg').hide();
+  $('#msg_error').hide();
+
+  $('#eventSubmit').on('click', function (e) {
+    e.preventDefault();
+
+    var summary = $('#summary').val();
+    var description = $('#description').val();
+    var location = $('#location').val();
+    var start = $('#start').val();
+    var end = $('#end').val();
+
+    if (summary == "" || summary == null || description == "" || description == null || location == "" || location == null || start == null || start == "" || end == "" || end == null) {
+      iziToast.warning({
+        title: 'Warning',
+        message: "Please fill all the fields...!",
+        position: 'center',
+      });
+    } else {
+      $.ajax({
+        url: '/addEvent',
+        method: 'POST',
+        data: {
+          summary: summary,
+          description: description,
+          location: location,
+          start: start,
+          end: end
+        },
+        headers: {
+          Authorization: $`Bearer ${localStorage.getItem("access_token")}`
+        },
+        error: function (r) { },
+        success: function (r) {
+          if (r.result) {
+            $('#msg').show();
+            $('#main_form').hide();
+            $("#url_id").html("<a href='" + r.url + "'> Click here to view in google Calender </a>");
+
+          } else {
+            $('#msg_error').show();
+            $('#main_form').hide();
+
+          }
+        }
+      });
+
+    }
+
+  });
+</script>
