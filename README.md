@@ -1,8 +1,8 @@
-## Google Calendar - Creating Event using OAuth
+# Google Calendar - Creating Event using OAuth
 
-#Getting started 
+## Getting started 
 
-Install 
+### Install 
 
 Clone or download the application from the repository and 
 
