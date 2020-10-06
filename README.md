@@ -7,6 +7,7 @@
 Clone or download the application from the repository and run<br/>
 
 npm install<br/>
+
 to install all the relevant dependencies.
 
 ### run
