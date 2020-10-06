@@ -2,14 +2,14 @@
 
 ## Getting started 
 
-### Install 
+### install 
 
 Clone or download the application from the repository and run
 
 **npm install**<br/><br/>
 to install all the relevant dependencies.
 
-### Run
+### run
 Run the application using following commands
 
 #### nodemon server 
