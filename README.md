@@ -4,7 +4,9 @@
 
 Install 
 
-Clone or download the application from the repository and run npm install to install all the relevant dependencies.
+Clone or download the application from the repository and 
+
+* run npm install to install all the relevant dependencies.
 
 
  
