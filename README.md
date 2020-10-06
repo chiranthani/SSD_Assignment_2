@@ -10,11 +10,11 @@ Clone or download the application from the repository and run
 to install all the relevant dependencies.
 
 ### run
-Run the application using following commands
+Run the application using following commands<br/><br/>
 
-#### nodemon server 
+nodemon server 
 or 
-#### npm run serve 
+npm run serve 
 
 ## Support Links
 
